@@ -5,6 +5,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 //test isDisabled
 test("Should not allowed click button if isDisabled is present", () => {
+  //calling Button component, not literal button
+  //Here 'isDisabled' is put in tag <span>
+  //(?) is 'isDisabled' really not efficient if put in tag <a> or <button> (?)
   const { container } = render(<Button isDisabled></Button>);
 
   expect(container.querySelector("span.disabled")).toBeInTheDocument();
@@ -23,6 +26,8 @@ test("Should render loading/spinner", () => {
 
 //check link
 test("Should render <a> tag", () => {
+  //without isExternal then you will have an error:
+  //'Invariant failed: You should not use <Link> outside a <Router>
   const { container, getByText } = render(
     <Button type="link" isExternal></Button>
   );

@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 export default function Button(props) {
   const className = [props.className];
+
+  //isPrimary, isLarge, isSmall, isBlock .. are classes from bootstrap
   if (props.isPrimary) className.push("btn-primary");
   if (props.isLarge) className.push("btn-lg");
   if (props.isSmall) className.push("btn-sm");
@@ -11,7 +13,7 @@ export default function Button(props) {
   if (props.hasShadow) className.push("btn-shadow");
 
   const onClick = () => {
-    //memastikan props mengirim fungsi onClik
+    //make sure onClick is present
     if (props.onClick) props.onClick();
   };
 
@@ -72,7 +74,7 @@ export default function Button(props) {
 }
 
 Button.propTypes = {
-  type: PropTypes.oneOf(["button", "link"]), //hanya terima properti button atau link
+  type: PropTypes.oneOf(["button", "link"]), //either button or link
   onClick: PropTypes.func,
   target: PropTypes.string,
   href: PropTypes.string,
